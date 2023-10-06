@@ -47,9 +47,9 @@ public class StudentController {
       
       public void displayList(){
     	  iterator = studentList.iterator();
-    	  while (iterator.hasNext()){
-    	  StudentModel students = iterator.next();
-    	  String[] info = students.toString().split("");
+    	  while (iterator.hasNext()) {
+    	  	StudentModel students = iterator.next();
+    	  	String[] info = students.toString().split("");
     	  studentView.listDisplay(getStudentName(), getStudentRollNo(), getStudentGender(), getStudentProgram(), getStudentLevel());
     	  }
       }
@@ -57,11 +57,11 @@ public class StudentController {
     	  boolean found = false;
     	  System.out.println("------------------------------------ ");
     	  iterator = studentList.iterator();
-    	  while (iterator.hasNext()){
-    	  StudentModel students = iterator.next();
-    	  if(students.getRollNo().equals(rollNumber)){
-    	  String[] info = students.toString().split("");
-    	  studentView.listDisplay(getStudentName(), getStudentRollNo(), getStudentGender(), getStudentProgram(), getStudentLevel());
+    	  	while (iterator.hasNext()){
+    	  		StudentModel students = iterator.next();
+    	  			if(students.getRollNo().equals(rollNumber)) {
+    	  				String[] info = students.toString().split("");
+    	  		studentView.listDisplay(getStudentName(), getStudentRollNo(), getStudentGender(), getStudentProgram(), getStudentLevel());
     	  	found = true;
     	  	}
     	  }
@@ -71,23 +71,24 @@ public class StudentController {
     	  }
     	  System.out.println("------------------------------------ ");
     }
-    	  public void deleteRecord(String rollNumber){
-    	  boolean found = false;
+    	  public void deleteRecord(String rollNumber) {
+    	  	boolean found = false;
+    	  	System.out.println("------------------------------------");
+    	  		iterator = studentList.iterator();
+    	  			while (iterator.hasNext()){
+    	  				StudentModel students = iterator.next();
+    	  					if (students.getRollNo().equals(rollNumber)) {
+    	  						iterator.remove();
+    	  					found = true;
+    	  				}
+    	  }
+    	  if (found == false) {
+    	  	System.out.println("No Record Found in the Students List.");
+    	  }
+		  else {
+    		System.out.println("The Record has been Successfully Deleted");
+    	  }
     	  System.out.println("------------------------------------");
-    	  iterator = studentList.iterator();
-    	  while (iterator.hasNext()){
-    	  StudentModel students = iterator.next();
-    	  if (students.getRollNo().equals(rollNumber)){
-    	  iterator.remove();
-    	  found = true;
-    	  }
-    	  }
-    	  if (found == false){
-    	  System.out.println("No Record Found in the Students List.");
-    	  }else {
-    	  System.out.println("The Record has been Successfully Deleted");
-    	  }
-    	  System.out.println("------------------------------------");
-    	  }
+    }
 
 }
